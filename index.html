@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Calculadora Hemoterapia</title>
+<style>
+:root{--bg:#0b132b;--panel:#1c2541;--accent:#3a506b;--ok:#5bc0be;--text:#eaeaea}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Segoe UI,Arial,sans-serif;display:flex;min-height:100vh}
+.main{margin:auto;background:var(--panel);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);max-width:640px;width:95%;padding:22px}
+h1{margin:0 0 12px;font-size:20px;letter-spacing:.3px}
+.row{margin:10px 0}
+label{display:block;margin:8px 0 4px;font-weight:600}
+input,select,button{width:100%;padding:10px 12px;border-radius:8px;border:1px solid transparent;background:#0f1a3a;color:var(--text)}
+select{appearance:none}
+button{background:var(--ok);color:#072; font-weight:700; color:#0b132b}
+button:hover{filter:brightness(1.05)}
+.note{font-size:12px;color:#c9d6ff88;margin-top:8px}
+.res{margin-top:16px;padding:14px;border-radius:10px;background:var(--accent);font-size:18px;font-weight:700}
+.footer{margin-top:12px;font-size:12px;opacity:.8}
+</style>
+</head>
+<body>
+  <div class="main">
+    <h1>Calculadora Hemoterapia</h1>
+    <div class="row">
+      <label for="x">x (número)</label>
+      <input id="x" type="number" value="0" inputmode="decimal">
+    </div>
+    <div class="row">
+      <label for="y">y (componente)</label>
+      <select id="y">
+        <option value="1.055">Sangue Total (1,055)</option>
+        <option value="1.06">Hemácias (1,06)</option>
+        <option value="1.02">Plasma (1,02)</option>
+        <option value="1.03">Plaquetas (1,03)</option>
+        <option value="1.03">Crio (1,03)</option>
+        <option value="1.055">MO (1,055)</option>
+        <option value="1.04">CPA (1,04)</option>
+      </select>
+    </div>
+    <div class="row">
+      <label for="z">z (volume)</label>
+      <select id="z">
+        <option value="24">150 mL (24)</option>
+        <option value="26">300 mL (26)</option>
+        <option value="28">600 mL (28)</option>
+      </select>
+    </div>
+    <div class="row"><button onclick="calcular()">Calcular</button></div>
+    <div id="res" class="res" aria-live="polite">Resultado: 0,00</div>
+    <div class="note">Fórmula: <code>(x + 12) * y + z</code></div>
+    <div class="footer">Compatível com GitHub Pages, Netlify, Vercel (HTML puro).</div>
+  </div>
+<script>
+function calcular(){
+  const fmt = (n)=> n.toLocaleString('pt-BR',{minimumFractionDigits:2, maximumFractionDigits:6});
+  const x = parseFloat(document.getElementById('x').value || '0');
+  const y = parseFloat(document.getElementById('y').value);
+  const z = parseFloat(document.getElementById('z').value);
+  const r = (x + 12) * y + z;
+  document.getElementById('res').textContent = 'Resultado: ' + fmt(r);
+}
+</script>
+</body>
+</html>
