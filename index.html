@@ -51,7 +51,7 @@ button:hover{filter:brightness(1.05)}
       </select>
     </div>
     <div class="row"><button onclick="calcular()">Calcular</button></div>
-    <div id="res" class="res" aria-live="polite">Peso em gramas a ser alíquotado ba balança:</div>
+    <div id="res" class="res" aria-live="polite">Resultado:</div>
     <div class="footer">Compatível com GitHub Pages, Netlify, Vercel (HTML puro).</div>
   </div>
 <script>
@@ -64,7 +64,7 @@ function calcular(){
   const formula = `(${x} + 12) * ${y} + ${z} = ${r.toFixed(2)}`;
   
   document.getElementById('res').textContent = 
-    `Resultado: ${arredondado}\nFórmula resolvida: ${formula}`;
+    `Peso em gramas a ser alíquotado ba balança:: ${arredondado}\nFórmula resolvida: ${formula}`;
 }
 </script>
 </body>
